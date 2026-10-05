@@ -1,1 +1,300 @@
-This is the index page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Umar Suhail</title>
+<meta name="description" content="Umar Suhail — IT tech, CS student at Sheridan, working toward cloud development.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #e4e7eb;
+    --rail: #2b4c9b;          /* cobalt PLA, like the printed rack */
+    --rail-shade: #203a78;
+    --hole: #e4e7eb;
+    --face: #f8f9fb;
+    --face-edge: #d3d8df;
+    --ink: #1c2230;
+    --muted: #5b6577;
+    --led: #2fb36a;
+    --chip: #eef1f6;
+    --rail-w: 30px;
+    --ear: 30px;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161a22;
+      --rail: #3a5fb8;
+      --rail-shade: #2b4c9b;
+      --hole: #161a22;
+      --face: #222834;
+      --face-edge: #323a49;
+      --ink: #e8ebf1;
+      --muted: #9aa4b6;
+      --chip: #2b3240;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161a22;
+    --rail: #3a5fb8;
+    --rail-shade: #2b4c9b;
+    --hole: #161a22;
+    --face: #222834;
+    --face-edge: #323a49;
+    --ink: #e8ebf1;
+    --muted: #9aa4b6;
+    --chip: #2b3240;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 20px 64px;
+  }
+
+  /* ---------- The rack ---------- */
+  .rack {
+    position: relative;
+    padding: 14px var(--rail-w);
+  }
+  .rail {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: var(--rail-w);
+    background:
+      radial-gradient(circle at 50% 22px, var(--hole) 0 4px, transparent 4.5px) 0 0 / 100% 44.45px repeat-y,
+      linear-gradient(90deg, var(--rail) 0 70%, var(--rail-shade) 70% 100%);
+    border-radius: 3px;
+  }
+  .rail.left { left: 0; }
+  .rail.right { right: 0; transform: scaleX(-1); }
+
+  /* Each section is a piece of gear with ears bolted onto the rails */
+  .unit {
+    position: relative;
+    margin: 0 calc(var(--ear) * -1) 10px;
+    padding: 26px calc(var(--ear) + 28px);
+    background: var(--face);
+    border: 1px solid var(--face-edge);
+    border-radius: 4px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.35);
+  }
+  .unit:last-child { margin-bottom: 0; }
+  .unit::before, .unit::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 10px; height: 10px;
+    margin-top: -5px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--muted) 0 1px, var(--face-edge) 1.5px);
+  }
+  .unit::before { left: 10px; }
+  .unit::after { right: 10px; }
+
+  h2 {
+    margin: 0 0 10px;
+    font-size: 15px;
+    font-weight: 700;
+    font-stretch: 85%;
+    letter-spacing: .01em;
+    color: var(--muted);
+  }
+  p { margin: 0; max-width: 60ch; }
+  p + p { margin-top: 10px; }
+
+  /* ---------- Hero unit ---------- */
+  .hero { padding-top: 40px; padding-bottom: 40px; }
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .led {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--led);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--led) 22%, transparent), 0 0 10px var(--led);
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(56px, 13vw, 112px);
+    line-height: .88;
+    font-weight: 800;
+    font-stretch: 62%;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+  }
+  .lede {
+    margin-top: 18px;
+    font-size: 20px;
+    line-height: 1.45;
+    font-stretch: 95%;
+  }
+
+  /* ---------- Content bits ---------- */
+  .roles { list-style: none; margin: 0; padding: 0; }
+  .roles li { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; }
+  .roles li + li { margin-top: 14px; }
+  .roles strong { font-weight: 650; }
+  .roles .when { color: var(--muted); font-size: 15px; white-space: nowrap; }
+  .roles .where { grid-column: 1 / -1; color: var(--muted); font-size: 15px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .chips li {
+    background: var(--chip);
+    border: 1px solid var(--face-edge);
+    border-radius: 3px;
+    padding: 3px 10px;
+    font-size: 15px;
+    font-stretch: 90%;
+  }
+
+  .builds { margin: 0; padding-left: 1.1em; }
+  .builds li + li { margin-top: 6px; }
+  .builds li::marker { color: var(--rail); }
+
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  .links a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid var(--rail);
+    border-radius: 3px;
+    padding: 7px 14px;
+  }
+  .links a:hover { background: var(--rail); color: #fff; }
+  a:focus-visible { outline: 3px solid var(--led); outline-offset: 2px; }
+
+  footer {
+    margin-top: 22px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  /* ---------- One moment of motion: gear sliding into the rack ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .unit {
+      animation: rackIn .5s cubic-bezier(.2,.8,.2,1) both;
+      animation-delay: calc(var(--i, 0) * 80ms + 120ms);
+    }
+    @keyframes rackIn {
+      from { opacity: 0; transform: translateX(28px); }
+      to   { opacity: 1; transform: none; }
+    }
+  }
+
+  @media (max-width: 560px) {
+    :root { --rail-w: 16px; --ear: 16px; }
+    main { padding: 24px 12px 40px; }
+    .unit { padding: 22px calc(var(--ear) + 14px); }
+    .unit::before { left: 3px; }
+    .unit::after { right: 3px; }
+    .unit::before, .unit::after { width: 8px; height: 8px; margin-top: -4px; }
+    .roles li { grid-template-columns: 1fr; }
+    .lede { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="rack">
+    <div class="rail left" aria-hidden="true"></div>
+    <div class="rail right" aria-hidden="true"></div>
+
+    <section class="unit hero" style="--i:0">
+      <div class="status"><span class="led" aria-hidden="true"></span>Online from Milton, Ontario</div>
+      <h1>Umar<br>Suhail</h1>
+      <p class="lede">IT tech by day, CS student by night. I fix things for people at work, break things on purpose at home, and I'm working my way toward cloud development.</p>
+    </section>
+
+    <section class="unit" style="--i:1">
+      <h2>Where I work</h2>
+      <ul class="roles">
+        <li>
+          <strong>IT Help Desk Technician</strong>
+          <span class="when">2024 – now</span>
+          <span class="where">Amcan Bearing &amp; Belting, Mississauga</span>
+        </li>
+        <li>
+          <strong>Microsoft Services Administrator</strong>
+          <span class="when">2026 – now</span>
+          <span class="where">NCCM</span>
+        </li>
+      </ul>
+      <p style="margin-top:14px">Day to day that's Microsoft 365, email security, mailbox migrations, VoIP phones, remote support, and the occasional printer that just won't print.</p>
+    </section>
+
+    <section class="unit" style="--i:2">
+      <h2>School</h2>
+      <p>Bachelor of Computer Science at Sheridan College. Started in 2023, finishing up in December 2027.</p>
+    </section>
+
+    <section class="unit" style="--i:3">
+      <h2>What I build with</h2>
+      <ul class="chips">
+        <li>Python</li>
+        <li>Flask</li>
+        <li>Node.js + Express</li>
+        <li>MongoDB</li>
+        <li>AWS</li>
+        <li>Terraform</li>
+        <li>.NET / EF Core</li>
+        <li>WPF</li>
+        <li>Ionic</li>
+        <li>SwiftUI</li>
+        <li>Linux</li>
+      </ul>
+    </section>
+
+    <section class="unit" style="--i:4">
+      <h2>Things I've made</h2>
+      <ul class="builds">
+        <li>An IT asset tracker in Flask with QR codes and logins</li>
+        <li>A full-stack astronomy FAQ app</li>
+        <li>A COVID-19 info app in Ionic</li>
+        <li>iOS apps in SwiftUI, including a MapKit trip planner and a SpriteKit shooter with online high scores</li>
+      </ul>
+    </section>
+
+    <section class="unit" style="--i:5">
+      <h2>The home lab</h2>
+      <p>A Dell OptiPlex Micro running Proxmox, hosting Jellyfin, Tailscale and OpenMediaVault. It all lives in a 10U rack I 3D printed myself, which is what this page is dressed up as.</p>
+    </section>
+
+    <section class="unit" style="--i:6">
+      <h2>Say hi</h2>
+      <!-- Swap these for your real links -->
+      <div class="links">
+        <a href="mailto:you@example.com">Email me</a>
+        <a href="https://github.com/your-username">GitHub</a>
+        <a href="https://www.linkedin.com/in/your-profile">LinkedIn</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>Racked and wired in Ontario</footer>
+</main>
+</body>
+</html>
